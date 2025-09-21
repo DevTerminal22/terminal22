@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal 22 — Landing Pages de Alta Conversão</title>
+  <meta name="description" content="Criamos landing pages profissionais que convertem visitantes em clientes. Soluções personalizadas para seu negócio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --brandA: #7C3AED;
+      --brandB: #06B6D4;
+      --primary: #2563eb;
+    }
+    
+    .brand-text {
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.5);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-white {
+      background: white;
+      color: var(--primary);
+      font-weight: 800;
+    }
+    
+    .tech-element {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.5;
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    .pulse {
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .process-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .process-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+    }
+    
+    .process-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 0 auto 1rem;
+    }
+    
+    /* Novos estilos para componentes existentes */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-sub {
+      color: #6b7280;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: linear-gradient(180deg, #fff, #f0f7ff);
+      border: 1px solid #dbeafe;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transition: 0.3s;
+      height: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    }
+    
+    .card-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 1rem;
+      background: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    .card-desc {
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .list {
+      margin-top: 0.75rem;
+      display: grid;
+      gap: 0.5rem;
+      color: #2563eb;
+    }
+    
+    .list.small {
+      color: #334155;
+      font-size: 0.9rem;
+    }
+    
+    .list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .portfolio-card {
+      background: linear-gradient(180deg, #fff, #f1f5f9);
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: 0.3s;
+      height: 100%;
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(2, 6, 23, 0.12);
+    }
+    
+    .portfolio-thumb {
+      height: 12rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(90deg, #60a5fa, #6366f1);
+    }
+    
+    .gradient-green {
+      background: linear-gradient(90deg, #34d399, #14b8a6);
+    }
+    
+    .gradient-violet {
+      background: linear-gradient(90deg, #a78bfa, #f472b6);
+    }
+    
+    .price-card {
+      position: relative;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 2rem;
+      height: 100%;
+    }
+    
+    .price-featured {
+      border: 2px solid #2563eb;
+      box-shadow: 0 18px 36px rgba(37, 99, 235, 0.15);
+    }
+    
+    .price-title {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .price-value {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin: 1rem 0;
+    }
+    
+    .ribbon {
+      position: absolute;
+      top: 14px;
+      right: -12px;
+      background: #2563eb;
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem 0 0 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    
+    .skeleton {
+      background: #e5edff;
+      border-radius: 0.5rem;
+      margin: 0 auto;
+    }
+    
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      color: white;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+      z-index: 40;
+    }
+    
+    #mobile-menu.show {
+      display: flex;
+    }
+    
+    .mobile-link {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: white;
+      text-decoration: none;
+    }
+    
+    #menu-btn {
+      display: none;
+    }
+    
+    /* NOVO BACKGROUND TECNOLÓGICO */
+    .tech-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #152a4e 100%);
+      overflow: hidden;
+    }
+
+    .tech-background::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(124, 58, 237, 0) 70%);
+      top: -250px;
+      right: -100px;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    .tech-background::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, rgba(6, 182, 212, 0) 70%);
+      bottom: -200px;
+      left: -100px;
+      animation: float 12s infinite ease-in-out reverse;
+    }
+
+    .grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(66, 153, 225, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66, 153, 225, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      transform: perspective(500px) rotateX(60deg) translateZ(0);
+      transform-origin: center center;
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(102, 204, 255, 0.6);
+      border-radius: 50%;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(20px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+    
+    @media (max-width: 768px) {
+      #menu-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        margin-left: 1rem;
+      }
+      
+      #menu-btn span {
+        display: block;
+        width: 1.5rem;
+        height: 0.125rem;
+        background: #1f2937;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-white to-indigo-50 text-gray-900 min-h-screen">
+  <!-- NOVO BACKGROUND TECNOLÓGICO -->
+  <div class="tech-background">
+    <div class="grid-lines"></div>
+    <div class="particles" id="particles"></div>
+    <div class="tech-element w-64 h-64 -top-32 -left-32 opacity-70"></div>
+    <div class="tech-element w-96 h-96 -bottom-48 -right-48 opacity-70"></div>
+  </div>
+  
+  <!-- Header -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#inicio" class="flex items-center group">
+          <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3 transform group-hover:rotate-12 transition">
+            <span class="text-white font-extrabold text-xl">T22</span>
+          </div>
+          <span class="text-2xl font-extrabold">Terminal<span class="text-blue-600">22</span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 font-semibold">
+          <a class="hover:text-blue-600 transition" href="#inicio">Início</a>
+          <a class="hover:text-blue-600 transition" href="#servicos">Serviços</a>
+          <a class="hover:text-blue-600 transition" href="#portfolio">Portfólio</a>
+          <a class="hover:text-blue-600 transition" href="#planos">Planos</a>
+        </nav>
+
+        <a class="btn btn-primary hidden md:inline-flex" href="https://wa.me/5534992340119" target="_blank">
+          <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+        </a>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 ml-4" aria-label="Abrir menu">
+          <span class="block w-6 h-0.5 bg-gray-900"></span>
+          <span class="block w-6 h-0.5 bg-gray-900"></span>
+          <span class="block w-6 h-0.5 bg-gray-900"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gradient-to-br from-[#7C3AED] to-[#06B6D4] text-white items-center justify-center flex-col gap-8 z-40">
+      <a class="mobile-link" href="#inicio">Início</a>
+      <a class="mobile-link" href="#servicos">Serviços</a>
+      <a class="mobile-link" href="#portfolio">Portfólio</a>
+      <a class="mobile-link" href="#planos">Planos</a>
+      <a class="btn btn-white mt-4" href="https://wa.me/5534992340119" target="_blank">
+        <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="pt-32 pb-20 px-4 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="relative z-10">
+        <!-- REMOVIDO: Badge "Transformando visitantes em clientes" -->
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 text-white">
+          Landing Pages que <span class="brand-text">Convertem</span>
+        </h1>
+        
+        <p class="text-xl text-gray-200 mb-8">
+          Desenvolvemos experiências digitais de alto desempenho para startups e empresas de tecnologia. 
+          Do briefing ao deploy, entregamos soluções que vendem e convertem.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a class="btn btn-primary pulse" href="https://wa.me/5534992340119" target="_blank">
+            <i class="fa-brands fa-whatsapp mr-2"></i>Solicitar Agora
+          </a>
+          <a class="btn btn-outline border-white text-white hover:bg-white hover:text-blue-600" href="#portfolio">
+            <i class="fa-regular fa-eye mr-2"></i>Ver Portfólio
+          </a>
+        </div>
+        
+        <div class="flex flex-wrap gap-6 text-gray-300">
+          <div class="flex items-center">
+            <i class="fa-solid fa-rocket text-blue-400 mr-2"></i>
+            <span>Design Premium</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-chart-line text-blue-400 mr-2"></i>
+            <span>Conversão Otimizada</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-bolt text-blue-400 mr-2"></i>
+            <span>Entrega Rápida</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="floating">
+          <div class="bg-white rounded-2xl shadow-2xl p-1">
+            <div class="border rounded-xl overflow-hidden">
+              <div class="bg-gray-100 py-3 px-4 border-b flex items-center">
+                <div class="flex gap-2">
+                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                </div>
+                <div class="text-xs text-gray-500 mx-auto">terminal22.com/exemplo</div>
+              </div>
+              <div class="p-8 bg-gradient-to-br from-blue-50 to-indigo-50">
+                <div class="text-center mb-6">
+                  <h3 class="text-2xl font-bold mb-2">Sua Startup Aqui</h3>
+                  <p class="text-gray-600">Transforme visitantes em clientes</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
+                  <div class="skeleton h-4 w-3/4 mb-3 mx-auto"></div>
+                  <div class="skeleton h-4 w-1/2 mb-4 mx-auto"></div>
+                  <!-- BOTÃO ATUALIZADO: Agora leva até a seção de planos -->
+                  <a href="#planos" class="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center">
+                    Solicitar Demonstração
+                  </a>
+                </div>
+                <div class="flex justify-center gap-4">
+                  <div class="skeleton h-3 w-16"></div>
+                  <div class="skeleton h-3 w-16"></div>
+                  <div class="skeleton h-3 w-16"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Processo de Trabalho (substitui a seção de clientes) -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <div class="badge"><i class="fa-solid fa-gears mr-2"></i>Nosso Processo</div>
+        <h2 class="section-title">Como <span class="brand-text">Trabalhamos</span></h2>
+        <p class="section-sub">Um processo transparente e colaborativo para garantir o sucesso do seu projeto</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3 class="text-xl font-bold mb-3">Briefing & Estratégia</h3>
+          <p class="text-gray-600">Entendemos seu negócio e definimos a estratégia de conversão</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3 class="text-xl font-bold mb-3">Design & Protótipo</h3>
+          <p class="text-gray-600">Criamos protótipos interativos para validação</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3 class="text-xl font-bold mb-3">Desenvolvimento</h3>
+          <p class="text-gray-600">Implementamos com tecnologias modernas и otimizadas</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3 class="text-xl font-bold mb-3">Entrega & Otimização</h3>
+          <p class="text-gray-600">Entregamos e monitoramos resultados para contínua melhoria</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos" class="py-20 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <div class="badge"><i class="fa-solid fa-star mr-2"></i>Nossos Diferenciais</div>
+        <h2 class="section-title">Serviços <span class="brand-text">Exclusivos</span></h2>
+        <p class="section-sub">Soluções completas que vão além do desenvolvimento tradicional.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-paint-brush"></i></div>
+          <h3 class="card-title">Design Premium</h3>
+          <p class="card-desc">Interfaces modernas e intuitivas que encantam e convertem.</p>
+          <ul class="list">
+            <li><i class="fa-solid fa-check"></i> Identidade única</li>
+            <li><i class="fa-solid fa-check"></i> UX focado em conversão</li>
+            <li><i class="fa-solid fa-check"></i> Consistência visual</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3 class="card-title">Performance Máxima</h3>
+          <p class="card-desc">Carregamento rápido, SEO on-page e mobile first.</p>
+          <ul class="list">
+            <li><i class="fa-solid fa-check"></i> LCP &lt; 2s</li>
+            <li><i class="fa-solid fa-check"></i> SEO técnico</li>
+            <li><i class="fa-solid fa-check"></i> Acessibilidade</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="card-title">Conversão Otimizada</h3>
+          <p class="card-desc">CTAs estratégicos, analytics e testes A/B quando necessário.</p>
+          <ul class="list">
+            <li><i class="fa-solid fa-check"></i> CTAs persuasivos</li>
+            <li><i class="fa-solid fa-check"></i> Integração com Pixel/GA</li>
+            <li><i class="fa-solid fa-check"></i> Testes e iteração</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfólio -->
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <div class="badge"><i class="fa-solid fa-briefcase mr-2"></i>Nossos Trabalhos</div>
+        <h2 class="section-title">Portfólio <span class="brand-text">Criativo</span></h2>
+        <p class="section-sub">Alguns exemplos de estruturas e visuais que entregamos.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="portfolio-card">
+          <a href="portfolio/techstart.html" class="block">
+            <div class="portfolio-thumb gradient-blue"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">TechStart Solutions</h3>
+              <p class="text-gray-600">Geração de leads B2B com copy direta e prova social.</p>
+              <div class="mt-4 flex items-center text-sm text-blue-600">
+                <span>Ver estudo de caso</span>
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="portfolio-card">
+          <a href="portfolio/ecolife.html" class="block">
+            <div class="portfolio-thumb gradient-green"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">EcoLife Store</h3>
+              <p class="text-gray-600">E‑commerce eco com foco em storytelling visual.</p>
+              <div class="mt-4 flex items-center text-sm text-green-600">
+                <span>Ver estudo de caso</span>
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="portfolio-card">
+          <a href="portfolio/educaplus.html" class="block">
+            <div class="portfolio-thumb gradient-violet"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">EducaPlus</h3>
+              <p class="text-gray-600">Cursos online com navegação simples e clara.</p>
+              <div class="mt-4 flex items-center text-sm text-violet-600">
+                <span>Ver estudo de caso</span>
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planos -->
+  <section id="planos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <div class="badge"><i class="fa-solid fa-gem mr-2"></i>Planos</div>
+        <h2 class="section-title">Escolha o <span class="brand-text">Plano</span></h2>
+        <p class="section-sub">Ao clicar, você será direcionado ao WhatsApp com uma mensagem personalizada.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Starter -->
+        <div class="price-card">
+          <h3 class="price-title">Starter</h3>
+          <p class="price-value">R$ 690</p>
+          <ul class="list small">
+            <li><i class="fa-solid fa-check"></i> 1 seção de destaque</li>
+            <li><i class="fa-solid fa-check"></i> Formulário + CTA WhatsApp</li>
+            <li><i class="fa-solid fa-check"></i> Deploy incluso</li>
+          </ul>
+          <button class="btn btn-primary w-full mt-6" data-plan="Starter" data-price="690">Quero este</button>
+        </div>
+
+        <!-- Pro -->
+        <div class="price-card price-featured">
+          <span class="ribbon">Mais escolhido</span>
+          <h3 class="price-title">Pro</h3>
+          <p class="price-value">R$ 1190</p>
+          <ul class="list small">
+            <li><i class="fa-solid fa-check"></i> 3–5 seções (hero, benefícios, prova, FAQ)</li>
+            <li><i class="fa-solid fa-check"></i> Integração Analytics/Pixel</li>
+            <li><i class="fa-solid fa-check"></i> 2 rodadas de ajustes</li>
+          </ul>
+          <button class="btn btn-primary w-full mt-6" data-plan="Pro" data-price="1190">Quero este</button>
+        </div>
+
+        <!-- Premium -->
+        <div class="price-card">
+          <h3 class="price-title">Premium</h3>
+          <p class="price-value">R$ 1890</p>
+          <ul class="list small">
+            <li><i class="fa-solid fa-check"></i> 6–8 seções + animações</li>
+            <li><i class="fa-solid fa-check"></i> Copy profissional + A/B opcional</li>
+            <li><i class="fa-solid fa-check"></i> Suporte 30 dias</li>
+          </ul>
+          <button class="btn btn-primary w-full mt-6" data-plan="Premium" data-price="1890">Quero este</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="max-w-3xl mx-auto px-4 relative z-10">
+      <h2 class="text-4xl md:text-5xl font-black mb-4">Pronto para transformar seu negócio?</h2>
+      <p class="text-xl text-blue-100 mb-8">Chama no Whats e bora tirar sua ideia do papel.</p>
+      <a class="btn btn-white" href="https://wa.me/5534992340119" target="_blank">
+        <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3">
+              <span class="text-white font-bold text-xl">T22</span>
+            </div>
+            <span class="text-2xl font-bold">Terminal<span class="text-blue-400">22</span></span>
+          </div>
+          <p class="text-gray-400">Landing pages de alta conversão para PMEs.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Serviços</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li>Landing Pages</li>
+            <li>Design Responsivo</li>
+            <li>SEO On‑page</li>
+            <li>Consultoria</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Links</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#inicio" class="hover:text-white transition">Início</a></li>
+            <li><a href="#servicos" class="hover:text-white transition">Serviços</a></li>
+            <li><a href="#portfolio" class="hover:text-white transition">Portfólio</a></li>
+            <li><a href="#planos" class="hover:text-white transition">Planos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Contato</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><i class="fa-brands fa-whatsapp mr-2"></i><a href="https://wa.me/5534992340119" target="_blank" rel="noopener" class="hover:text-white transition">(34) 99234‑0119</a></li>
+            <li><i class="fa-regular fa-envelope mr-2"></i><a href="mailto:contato@terminal22.com.br" class="hover:text-white transition">contato@terminal22.com.br</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">© 2025 Terminal 22. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Animação simples para os elementos
+    document.addEventListener('DOMContentLoaded', function() {
+      const ctaButton = document.querySelector('.pulse');
+      
+      if (ctaButton) {
+        setInterval(() => {
+          ctaButton.classList.toggle('pulse');
+        }, 2000);
+      }
+      
+      // Mobile menu functionality
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+
+      // Criar partículas dinâmicas para o background
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Posição aleatória
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        
+        // Tamanho aleatório
+        const size = Math.random() * 10 + 2;
+        
+        // Atraso de animação aleatório
+        const delay = Math.random() * 5;
+        
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    });
+  </script>
+</body>
+</html>

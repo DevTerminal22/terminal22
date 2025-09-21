@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechStart Solutions - Terminal 22</title>
+  <meta name="description" content="Case de sucesso: Landing page para geração de leads B2B - Terminal 22" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --brandA: #7C3AED;
+      --brandB: #06B6D4;
+      --primary: #2563eb;
+    }
+    
+    .brand-text {
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.5);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .case-study-image {
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+    }
+    
+    .case-study-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-gray-900 min-h-screen">
+  <!-- Header -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="../index.html" class="flex items-center group">
+          <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3 transform group-hover:rotate-12 transition">
+            <span class="text-white font-extrabold text-xl">T22</span>
+          </div>
+          <span class="text-2xl font-extrabold">Terminal<span class="text-blue-600">22</span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 font-semibold">
+          <a class="hover:text-blue-600 transition" href="../index.html">Início</a>
+          <a class="hover:text-blue-600 transition" href="../index.html#portfolio">Portfólio</a>
+        </nav>
+
+        <a class="btn btn-primary" href="https://wa.me/5534992340119" target="_blank">
+          <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+        <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>Case de Sucesso - B2B
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+        TechStart <span class="brand-text">Solutions</span>
+      </h1>
+      
+      <p class="text-xl text-gray-700 mb-8 max-w-3xl">
+        Landing page para geração de leads qualificados no mercado B2B de tecnologia, com foco em copy direta e prova social estratégica.
+      </p>
+      
+      <div class="flex flex-wrap gap-4 mb-12">
+        <span class="result-badge"><i class="fa-solid fa-arrow-up mr-2"></i>Conversão: +68%</span>
+        <span class="result-badge"><i class="fa-solid fa-clock mr-2"></i>Entrega: 7 dias</span>
+        <span class="result-badge"><i class="fa-solid fa-gear mr-2"></i>Tecnologia: HTML, CSS, JS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Showcase -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="p-1">
+          <div class="bg-gray-800 py-3 px-4 border-b border-gray-700 flex items-center">
+            <div class="flex gap-2">
+              <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            </div>
+            <div class="text-xs text-gray-400 mx-auto">techstart-solutions.com/landing</div>
+          </div>
+          <div class="bg-gray-900 p-8">
+            <img src="https://placehold.co/800x450/1e40af/white?text=TechStart+Solutions+Landing+Page" alt="TechStart Solutions Landing Page" class="case-study-image w-full">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Details -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black mb-6">Desafio do <span class="brand-text">Projeto</span></h2>
+          <p class="text-lg text-gray-700 mb-6">
+            A TechStart Solutions, empresa de software B2B, precisava aumentar a geração de leads qualificados para sua plataforma de gestão empresarial. O desafio era criar uma landing page que transmitisse confiança e autoridade para decisores de empresas.
+          </p>
+          <p class="text-lg text-gray-700">
+            O público-alvo era formado por gestores de TI e diretores financeiros de médias e grandes empresas, necessitando de uma abordagem profissional e com foco em ROI.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold mb-6">Metas do Projeto</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                <i class="fa-solid fa-bullseye text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Aumentar Taxa de Conversão</h4>
+                <p class="text-gray-600">Meta: +40% em leads qualificados</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                <i class="fa-solid fa-gauge-high text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Performance Técnica</h4>
+                <p class="text-gray-600">Carregamento em menos de 2 segundos</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                <i class="fa-solid fa-mobile-screen text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Design Responsivo</h4>
+                <p class="text-gray-600">Experiência perfeita em todos os dispositivos</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Soluções <span class="brand-text">Implementadas</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-quote-right"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Copy Estratégica</h3>
+          <p class="text-gray-600">Textos persuasivos focados em benefícios para o negócio e ROI, com linguagem técnica apropriada para o público B2B.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Prova Social</h3>
+          <p class="text-gray-600">Seção de depoimentos de clientes reais, cases de sucesso e logos de empresas que utilizam a plataforma.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-chart-simple"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Métricas de Resultado</h3>
+          <p class="text-gray-600">Destaque para números concretos de performance, economia de tempo e retorno sobre investimento.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-pen-ruler"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Formulário Inteligente</h3>
+          <p class="text-gray-600">Formulário multi-step com campos estratégicos para qualificação de leads e segmentação.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Performance Otimizada</h3>
+          <p class="text-gray-600">Carregamento ultrarrápido com otimização de imagens, lazy loading e CDN para entrega global.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="text-blue-600 text-3xl mb-4">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Design Responsivo</h3>
+          <p class="text-gray-600">Layout adaptativo que oferece experiência perfeita em desktop, tablet e smartphones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Resultados <span class="text-blue-200">Alcançados</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
+            <h3 class="text-2xl font-bold mb-6">Métricas de Sucesso</h3>
+            
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Taxa de Conversão</span>
+                  <span class="font-bold text-green-300">+68%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 68%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Leads Qualificados</span>
+                  <span class="font-bold text-green-300">+142%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-semibold">Tempo de Carregamento</span>
+                  <span class="font-bold text-green-300">1.2s</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
+            <h3 class="text-2xl font-bold mb-6">Feedback do Cliente</h3>
+            
+            <div class="flex items-start mb-6">
+              <div class="mr-4">
+                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold">JS</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold">João Silva</h4>
+                <p class="text-blue-100 text-sm">Diretor de Marketing - TechStart Solutions</p>
+                <p class="text-white mt-2 italic">
+                  "A landing page superou nossas expectativas. Em apenas duas semanas, já tivemos um aumento de 68% na conversão e os leads são muito mais qualificados. O trabalho da Terminal 22 foi exceptional desde o briefing até a entrega."
+                </p>
+              </div>
+            </div>
+            
+            <a href="../index.html#portfolio" class="btn btn-outline w-full bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
+              <i class="fa-solid fa-arrow-left mr-2"></i>Voltar ao Portfólio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-black mb-6">Quer resultados similares para sua empresa?</h2>
+      <p class="text-xl text-gray-700 mb-8">Nossa equipe pode criar uma landing page de alta conversão para seu negócio B2B.</p>
+      <a class="btn btn-primary" href="https://wa.me/5534992340119" target="_blank">
+        <i class="fa-brands fa-whatsapp mr-2"></i>Falar com Especialista
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3">
+              <span class="text-white font-bold text-xl">T22</span>
+            </div>
+            <span class="text-2xl font-bold">Terminal<span class="text-blue-400">22</span></span>
+          </div>
+          <p class="text-gray-400">Landing pages de alta conversão para PMEs.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Serviços</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li>Landing Pages</li>
+            <li>Design Responsivo</li>
+            <li>SEO On‑page</li>
+            <li>Consultoria</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Links</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-white transition">Início</a></li>
+            <li><a href="../index.html#servicos" class="hover:text-white transition">Serviços</a></li>
+            <li><a href="../index.html#portfolio" class="hover:text-white transition">Portfólio</a></li>
+            <li><a href="../index.html#planos" class="hover:text-white transition">Planos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Contato</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><i class="fa-brands fa-whatsapp mr-2"></i><a href="https://wa.me/5534992340119" target="_blank" rel="noopener" class="hover:text-white transition">(34) 99234‑0119</a></li>
+            <li><i class="fa-regular fa-envelope mr-2"></i><a href="mailto:contato@terminal22.com.br" class="hover:text-white transition">contato@terminal22.com.br</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">© 2025 Terminal 22. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+</body>
+</html>
