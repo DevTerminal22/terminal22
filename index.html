@@ -407,6 +407,7 @@
       50% { opacity: 0.6; transform: scale(1.05); }
     }
     
+    /* MELHORIAS PARA MOBILE */
     @media (max-width: 768px) {
       #menu-btn {
         display: flex;
@@ -420,6 +421,192 @@
         width: 1.5rem;
         height: 0.125rem;
         background: #1f2937;
+      }
+      
+      /* Ajustes no header */
+      header .flex {
+        padding: 0.75rem 1rem;
+      }
+      
+      /* Hero section melhorada para mobile */
+      #inicio {
+        padding-top: 7rem;
+        padding-bottom: 3rem;
+      }
+      
+      #inicio h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        line-height: 1.2;
+      }
+      
+      #inicio p {
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 0 1rem;
+      }
+      
+      #inicio .flex.flex-wrap.gap-4 {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #inicio .btn {
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 1rem;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      #inicio .flex.flex-wrap.gap-6 {
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      
+      /* Preview da landing page em mobile */
+      .floating {
+        margin-top: 2rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Seção de processo */
+      .process-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      /* Seção de serviços */
+      .card {
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
+      }
+      
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+      }
+      
+      /* Seção de portfólio */
+      .portfolio-card {
+        margin-bottom: 2rem;
+      }
+      
+      .portfolio-thumb {
+        height: 10rem;
+        font-size: 2.5rem;
+      }
+      
+      /* Seção de planos */
+      .price-card {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+      }
+      
+      .price-value {
+        font-size: 2rem;
+      }
+      
+      /* CTA final */
+      .py-20 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      
+      /* Footer */
+      footer .grid {
+        gap: 2rem;
+      }
+      
+      /* Melhorias de espaçamento geral */
+      .section-title {
+        font-size: 2rem;
+        text-align: center;
+      }
+      
+      .section-sub {
+        font-size: 1rem;
+        padding: 0 1rem;
+        text-align: center;
+      }
+      
+      .badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Botão flutuante do WhatsApp para mobile */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7);
+      }
+    }
+
+    /* Estilos adicionais para melhorar a experiência mobile */
+    @media (max-width: 480px) {
+      #inicio h1 {
+        font-size: 2rem;
+      }
+      
+      .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+      
+      .process-card, .card, .price-card {
+        border-radius: 12px;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+    }
+
+    /* Melhorias de acessibilidade para mobile */
+    @media (max-width: 768px) {
+      /* Aumenta área de toque para botões */
+      .btn {
+        min-height: 44px;
+      }
+      
+      /* Garante que textos sejam legíveis */
+      body {
+        font-size: 16px; /* Previne zoom em iOS */
+        line-height: 1.6;
+      }
+      
+      /* Melhora espaçamento para toque */
+      .flex.flex-wrap.gap-4 {
+        gap: 1rem !important;
+      }
+      
+      /* Ajusta o menu mobile */
+      .mobile-link {
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
       }
     }
   </style>
@@ -479,8 +666,6 @@
   <section id="inicio" class="pt-32 pb-20 px-4 relative overflow-hidden">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="relative z-10">
-        <!-- REMOVIDO: Badge "Transformando visitantes em clientes" -->
-        
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 text-white">
           Landing Pages que <span class="brand-text">Convertem</span>
         </h1>
@@ -578,7 +763,7 @@
         <div class="process-card">
           <div class="process-number">3</div>
           <h3 class="text-xl font-bold mb-3">Desenvolvimento</h3>
-          <p class="text-gray-600">Implementamos com tecnologias modernas и otimizadas</p>
+          <p class="text-gray-600">Implementamos com tecnologias modernas e otimizadas</p>
         </div>
         
         <div class="process-card">
@@ -794,6 +979,11 @@
     </div>
   </footer>
 
+  <!-- Botão flutuante do WhatsApp para mobile -->
+  <a href="https://wa.me/5534992340119" target="_blank" class="whatsapp-float md:hidden">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
   <script>
     // Animação simples para os elementos
     document.addEventListener('DOMContentLoaded', function() {
@@ -849,6 +1039,18 @@
         
         particlesContainer.appendChild(particle);
       }
+
+      // Adicionar funcionalidade aos botões de planos
+      const planButtons = document.querySelectorAll('[data-plan]');
+      planButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const plan = this.getAttribute('data-plan');
+          const price = this.getAttribute('data-price');
+          const message = `Olá! Gostaria de solicitar o plano ${plan} no valor de R$ ${price}.`;
+          const whatsappURL = `https://wa.me/5534992340119?text=${encodeURIComponent(message)}`;
+          window.open(whatsappURL, '_blank');
+        });
+      });
     });
   </script>
 </body>
