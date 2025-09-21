@@ -701,41 +701,59 @@
       </div>
       
       <div class="relative">
-        <div class="floating">
-          <div class="bg-white rounded-2xl shadow-2xl p-1">
-            <div class="border rounded-xl overflow-hidden">
-              <div class="bg-gray-100 py-3 px-4 border-b flex items-center">
-                <div class="flex gap-2">
-                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                </div>
-                <div class="text-xs text-gray-500 mx-auto">terminal22.com/exemplo</div>
-              </div>
-              <div class="p-8 bg-gradient-to-br from-blue-50 to-indigo-50">
-                <div class="text-center mb-6">
-                  <h3 class="text-2xl font-bold mb-2">Sua Startup Aqui</h3>
-                  <p class="text-gray-600">Transforme visitantes em clientes</p>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-md mb-6">
-                  <div class="skeleton h-4 w-3/4 mb-3 mx-auto"></div>
-                  <div class="skeleton h-4 w-1/2 mb-4 mx-auto"></div>
-                  <!-- BOTÃO ATUALIZADO: Agora leva até a seção de planos -->
-                  <a href="#planos" class="block w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center">
-                    Solicitar Demonstração
-                  </a>
-                </div>
-                <div class="flex justify-center gap-4">
-                  <div class="skeleton h-3 w-16"></div>
-                  <div class="skeleton h-3 w-16"></div>
-                  <div class="skeleton h-3 w-16"></div>
-                </div>
-              </div>
+  <div class="floating">
+    <div class="bg-white rounded-2xl shadow-2xl p-1">
+      <div class="border rounded-xl overflow-hidden">
+        <div class="bg-gray-100 py-3 px-4 border-b flex items-center">
+          <div class="flex gap-2">
+            <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+          </div>
+          <div class="text-xs text-gray-500 mx-auto">terminal22.com/simulador</div>
+        </div>
+        <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Personalize sua Landing Page</h3>
+            <p class="text-gray-600">Experimente e veja o resultado instantaneamente</p>
+          </div>
+          
+          <!-- Controles de personalização -->
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Estilo preferido:</label>
+            <div class="flex gap-2 justify-center mb-4">
+              <button class="style-option bg-gradient-to-r from-blue-400 to-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium" data-style="modern">Moderno</button>
+              <button class="style-option bg-gradient-to-r from-green-400 to-teal-500 text-white px-4 py-2 rounded-lg text-sm font-medium" data-style="clean">Clean</button>
+              <button class="style-option bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium" data-style="bold">Audacioso</button>
             </div>
+            
+            <label class="block text-sm font-medium text-gray-700 mb-2">Cores da sua marca:</label>
+            <div class="flex gap-2 justify-center mb-4">
+              <input type="color" id="primary-color" value="#2563eb" class="w-8 h-8 rounded-full border-2 border-white shadow cursor-pointer">
+              <input type="color" id="secondary-color" value="#7c3aed" class="w-8 h-8 rounded-full border-2 border-white shadow cursor-pointer">
+            </div>
+          </div>
+          
+          <!-- Prévia dinâmica -->
+          <div class="bg-white rounded-lg p-4 shadow-md mb-6 preview-box" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+            <h4 class="text-white text-center font-bold mb-2 text-lg preview-title">Sua Marca Incrível</h4>
+            <p class="text-white text-center text-sm preview-text">Sua mensagem de impacto aqui</p>
+            <button class="block w-full bg-white text-blue-600 py-2 rounded-lg font-semibold text-center mt-3 preview-button">Solicitar Demonstração</button>
+          </div>
+          
+          <!-- Mini-formulário para captura de leads -->
+          <div class="bg-white rounded-lg p-4 shadow-md">
+            <p class="text-sm text-gray-600 mb-3">Gostou do resultado? Receba uma proposta personalizada:</p>
+            <input type="email" placeholder="Seu melhor e-mail" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2" id="lead-email">
+            <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold mt-2" id="send-proposal">
+              Receber Proposta Personalizada
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
   </section>
 
   <!-- Processo de Trabalho (substitui a seção de clientes) -->
@@ -1052,6 +1070,102 @@
         });
       });
     });
+
+    // Interatividade do simulador
+document.addEventListener('DOMContentLoaded', function() {
+  // Elementos da prévia
+  const previewBox = document.querySelector('.preview-box');
+  const previewTitle = document.querySelector('.preview-title');
+  const previewText = document.querySelector('.preview-text');
+  const previewButton = document.querySelector('.preview-button');
+  
+  // Controles
+  const styleOptions = document.querySelectorAll('.style-option');
+  const primaryColor = document.getElementById('primary-color');
+  const secondaryColor = document.getElementById('secondary-color');
+  const leadEmail = document.getElementById('lead-email');
+  const sendProposal = document.getElementById('send-proposal');
+  
+  // Aplicar estilos aos botões de opção
+  styleOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      // Remover classe ativa de todos
+      styleOptions.forEach(btn => btn.classList.remove('ring-2', 'ring-offset-2', 'ring-blue-500'));
+      
+      // Adicionar classe ativa ao clicado
+      this.classList.add('ring-2', 'ring-offset-2', 'ring-blue-500');
+      
+      // Aplicar estilo selecionado
+      const style = this.getAttribute('data-style');
+      applyStyle(style);
+    });
+  });
+  
+  // Aplicar mudanças de cor
+  primaryColor.addEventListener('input', updateColors);
+  secondaryColor.addEventListener('input', updateColors);
+  
+  // Enviar proposta
+  sendProposal.addEventListener('click', function() {
+    const email = leadEmail.value;
+    if (validateEmail(email)) {
+      const message = `Olá! Gostaria de receber uma proposta personalizada. Meu e-mail é: ${email}`;
+      const whatsappURL = `https://wa.me/5534992340119?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    } else {
+      alert('Por favor, insira um e-mail válido.');
+    }
+  });
+  
+  function applyStyle(style) {
+    switch(style) {
+      case 'modern':
+        previewTitle.style.fontFamily = "'Poppins', sans-serif";
+        previewTitle.style.fontWeight = "700";
+        previewBox.style.borderRadius = "12px";
+        break;
+      case 'clean':
+        previewTitle.style.fontFamily = "'Poppins', sans-serif";
+        previewTitle.style.fontWeight = "600";
+        previewBox.style.borderRadius = "8px";
+        break;
+      case 'bold':
+        previewTitle.style.fontFamily = "'Poppins', sans-serif";
+        previewTitle.style.fontWeight = "800";
+        previewBox.style.borderRadius = "16px";
+        break;
+    }
+  }
+  
+  function updateColors() {
+    const primary = primaryColor.value;
+    const secondary = secondaryColor.value;
+    
+    // Aplicar gradiente na prévia
+    previewBox.style.background = `linear-gradient(135deg, ${primary}, ${secondary})`;
+    
+    // Aplicar cor no botão
+    previewButton.style.backgroundColor = primary;
+    previewButton.style.color = getContrastColor(primary);
+  }
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  function getContrastColor(hexcolor) {
+    hexcolor = hexcolor.replace("#", "");
+    const r = parseInt(hexcolor.substr(0, 2), 16);
+    const g = parseInt(hexcolor.substr(2, 2), 16);
+    const b = parseInt(hexcolor.substr(4, 2), 16);
+    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    return (yiq >= 128) ? '#000000' : '#FFFFFF';
+  }
+  
+  // Ativar primeiro estilo por padrão
+  styleOptions[0].click();
+});
   </script>
 </body>
 </html>

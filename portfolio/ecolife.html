@@ -3,179 +3,687 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoLife Store - Terminal 22</title>
-  <meta name="description" content="E-commerce eco com storytelling visual - Exemplo do portfólio Terminal 22" />
+  <title>EcoLife Store - E-commerce Sustentável</title>
+  <meta name="description" content="E-commerce ecológico com storytelling visual que conecta consumidores conscientes a produtos sustentáveis." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/styles.css" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Poppins','ui-sans-serif','system-ui'] },
-          colors: {
-            primary: { DEFAULT: '#2563eb' },
-            brand: {
-              start: '#7C3AED',
-              end: '#06B6D4'
-            }
-          }
-        }
-      }
+  <style>
+    :root {
+      --primary: #10B981;
+      --primary-dark: #059669;
+      --secondary: #8B5CF6;
+      --accent: #0EA5E9;
+      --earth: #A16207;
+      --dark: #1F2937;
+      --light: #F9FAFB;
     }
-  </script>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Animated nature background */
+    .nature-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+      background-size: 200% 200%;
+      animation: gradient 15s ease infinite;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Organic shapes */
+    .organic-shape {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(139, 92, 246, 0.1));
+      animation: morph 10s ease-in-out infinite;
+    }
+    
+    @keyframes morph {
+      0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+      100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    /* Leaf floating animation */
+    @keyframes float-leaf {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    
+    .floating-leaf {
+      animation: float-leaf 8s ease-in-out infinite;
+    }
+    
+    /* Custom button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.5);
+    }
+    
+    /* Eco card */
+    .eco-card {
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .eco-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Gradient text */
+    .eco-text {
+      background: linear-gradient(135deg, var(--primary), var(--earth));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Stats counter */
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--earth));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Custom form styling */
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid #E5E7EB;
+      background: white;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+    
+    /* Storytelling section */
+    .story-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .story-item {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    
+    .story-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Product showcase */
+    .product-showcase {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Pulse animation */
+    @keyframes pulse-eco {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .pulse-eco {
+      animation: pulse-eco 3s infinite;
+    }
+    
+    /* Leaf decoration */
+    .leaf-decoration {
+      position: absolute;
+      opacity: 0.1;
+      z-index: -1;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 text-gray-900">
-  <!-- Cursor custom -->
-  <div class="custom-cursor"></div>
-  <div class="cursor-follower"></div>
-
+<body>
+  <div class="nature-bg"></div>
+  
+  <!-- Decorative leaves -->
+  <div class="leaf-decoration floating-leaf" style="top: 10%; left: 5%; width: 100px; height: 100px;">
+    <i class="fa-solid fa-leaf text-6xl text-green-600"></i>
+  </div>
+  <div class="leaf-decoration floating-leaf" style="top: 40%; right: 5%; width: 80px; height: 80px; animation-delay: 1s;">
+    <i class="fa-solid fa-leaf text-5xl text-green-500"></i>
+  </div>
+  <div class="leaf-decoration floating-leaf" style="bottom: 20%; left: 10%; width: 120px; height: 120px; animation-delay: 2s;">
+    <i class="fa-solid fa-leaf text-7xl text-green-700"></i>
+  </div>
+  
   <!-- Header -->
-  <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-blue-100 z-50">
+  <header class="fixed w-full glass z-50 py-3">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4">
-        <a href="../index.html" class="flex items-center group">
-          <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3 transform group-hover:rotate-12 transition">
-            <span class="text-white font-extrabold text-xl">T22</span>
+      <div class="flex items-center justify-between">
+        <a href="#" class="flex items-center group">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mr-3 transform group-hover:rotate-12 transition duration-300">
+            <i class="fa-solid fa-leaf text-white text-xl"></i>
           </div>
-          <span class="text-2xl font-extrabold">Terminal<span class="text-primary">22</span></span>
+          <span class="text-2xl font-black">EcoLife<span class="text-green-600">Store</span></span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-8 font-semibold">
-          <a class="nav-link" href="../index.html">Início</a>
-          <a class="nav-link" href="../index.html#portfolio">Portfólio</a>
+        <nav class="hidden md:flex items-center gap-8 font-medium">
+          <a class="hover:text-green-600 transition" href="#story">Nossa História</a>
+          <a class="hover:text-green-600 transition" href="#products">Produtos</a>
+          <a class="hover:text-green-600 transition" href="#impact">Impacto</a>
+          <a class="hover:text-green-600 transition" href="#testimonials">Depoimentos</a>
         </nav>
 
-        <a class="btn btn-primary" href="#" data-wa="portfolio">
-          <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+        <a class="btn btn-primary" href="#shop">
+          <i class="fa-solid fa-store mr-2"></i>Explorar Loja
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="min-h-screen pt-32 pb-16 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-        <span class="w-2 h-2 bg-green-600 rounded-full mr-2 animate-pulse"></span>Case de Sucesso - E-commerce
-      </div>
-      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">EcoLife <span class="brand-text">Store</span></h1>
-      <p class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">E-commerce sustentável com foco em storytelling visual e experiência do usuário premium.</p>
-      
-      <div class="bg-white rounded-2xl shadow-xl p-2 max-w-4xl mx-auto mb-12">
-        <div class="border rounded-xl overflow-hidden">
-          <div class="bg-gray-100 py-3 px-4 border-b flex items-center">
-            <div class="flex gap-2">
-              <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-              <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+  <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <span class="w-2 h-2 bg-green-600 rounded-full mr-2 animate-pulse"></span>E-commerce Sustentável
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            Consumo consciente, <span class="eco-text">histórias reais</span>
+          </h1>
+          
+          <p class="text-xl text-gray-700 mb-8">
+            Descubra produtos ecológicos com propósito. Cada item em nossa loja conta uma história de sustentabilidade e impacto positivo.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 mb-10">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-seedling text-green-600"></i>
+              </div>
+              <span class="font-semibold">Produtos Sustentáveis</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-earth-americas text-green-600"></i>
+              </div>
+              <span class="font-semibold">Impacto Verificado</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-truck-fast text-green-600"></i>
+              </div>
+              <span class="font-semibold">Entrega Neutra em Carbono</span>
             </div>
           </div>
-          <div class="p-8">
-            <img src="https://placehold.co/800x500/14b8a6/white?text=EcoLife+Store+E-commerce" alt="EcoLife Store E-commerce" class="rounded-lg shadow-md w-full">
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="btn btn-primary pulse-eco">
+              <i class="fa-solid fa-basket-shopping mr-2"></i>Explorar Produtos
+            </a>
+            <a href="#story" class="btn glass text-gray-700 border border-gray-200">
+              <i class="fa-solid fa-book-open mr-2"></i>Conheça Nossa História
+            </a>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="floating-leaf">
+            <div class="eco-card">
+              <div class="p-1">
+                <div class="bg-gray-800 py-3 px-4 border-b border-gray-700 flex items-center rounded-t-2xl">
+                  <div class="flex gap-2">
+                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <div class="text-xs text-gray-400 mx-auto">ecolifestore.com/featured-product</div>
+                </div>
+                <div class="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-b-2xl">
+                  <div class="mb-6 relative">
+                    <div class="w-full h-64 bg-gradient-to-r from-green-200 to-emerald-300 rounded-xl flex items-center justify-center">
+                      <i class="fa-solid fa-leaf text-6xl text-white"></i>
+                    </div>
+                    <div class="absolute -bottom-4 left-4 bg-white px-4 py-2 rounded-full shadow-md">
+                      <span class="font-bold text-green-700">Produto em Destaque</span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 class="font-bold text-lg">Kit Sustentável Casa Verde</h3>
+                      <p class="text-gray-600">4 itens essenciais para um lar sustentável</p>
+                    </div>
+                    <div class="text-2xl font-black text-green-700">R$ 149<span class="text-sm">,90</span></div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                      <div class="flex -space-x-2">
+                        <div class="w-8 h-8 bg-green-200 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-green-300 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-green-400 rounded-full border-2 border-white"></div>
+                      </div>
+                      <span class="text-sm text-gray-600 ml-2">+12 compraram hoje</span>
+                    </div>
+                    <div class="flex items-center">
+                      <div class="text-yellow-400">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                      </div>
+                      <span class="text-sm text-gray-600 ml-1">4.8</span>
+                    </div>
+                  </div>
+                  
+                  <button class="btn btn-primary w-full">
+                    <i class="fa-solid fa-cart-plus mr-2"></i>Adicionar ao Carrinho
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating elements -->
+          <div class="absolute -top-4 -left-4 w-24 h-24 bg-green-200 rounded-full opacity-30 organic-shape"></div>
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-emerald-200 rounded-full opacity-30 organic-shape"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <p class="text-gray-600 font-medium">Marcas sustentáveis que fazem parte do nosso ecossistema</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70">
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-green-100 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-green-700">BioEssência</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-green-100 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-green-700">EcoCasa</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-green-100 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-green-700">VerdeVida</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-green-100 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-green-700">Naturalize</span>
           </div>
         </div>
       </div>
-
-      <a class="btn btn-primary" href="../index.html#portfolio">
-        <i class="fa-solid fa-arrow-left mr-2"></i>Voltar ao Portfólio
-      </a>
     </div>
   </section>
 
-  <!-- Detalhes do Projeto -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-black mb-6">Detalhes do <span class="brand-text">Projeto</span></h2>
+  <!-- Storytelling -->
+  <section id="story" class="py-20 bg-gradient-to-br from-green-50 to-emerald-50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Cada produto tem uma <span class="eco-text">história</span></h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Conheça a jornada por trás de cada item e o impacto positivo que ele gera</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold mb-4">Desafio</h3>
-          <p class="text-gray-700 mb-6">A EcoLife Store precisava de uma plataforma de e-commerce que transmitisse seus valores sustentáveis e oferecesse uma experiência de compra intuitiva e engajante.</p>
-          
-          <h3 class="text-2xl font-bold mb-4">Solução</h3>
-          <p class="text-gray-700 mb-6">Criamos um e-commerce com storytelling visual forte, navegação intuitiva, galeria de produtos imersiva e checkout otimizado para conversão.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="story-section">
+          <div class="story-item active">
+            <div class="organic-shape w-full h-96 bg-gradient-to-r from-green-200 to-emerald-300 flex items-center justify-center">
+              <i class="fa-solid fa-seedling text-6xl text-white"></i>
+            </div>
+          </div>
         </div>
         
-        <div class="bg-gray-50 p-8 rounded-2xl">
-          <h3 class="text-2xl font-bold mb-6">Recursos Implementados</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <div class="bg-green-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-images text-green-600"></i>
+        <div>
+          <div class="story-item active">
+            <h3 class="text-2xl font-bold mb-4">Origem Sustentável</h3>
+            <p class="text-gray-700 mb-6">Todos os nossos produtos são provenientes de fontes responsáveis, com materiais renováveis e processos de produção que respeitam o meio ambiente e as comunidades envolvidas.</p>
+            
+            <div class="flex items-center mb-6">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fa-solid fa-water text-green-600"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Galeria Imersiva</h4>
-                <p class="text-gray-600">Visual storytelling com produtos em contexto real</p>
+                <h4 class="font-semibold">Redução de 78% no uso de água</h4>
+                <p class="text-sm text-gray-600">Em comparação com processos convencionais</p>
               </div>
-            </li>
-            <li class="flex items-start">
-              <div class="bg-green-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-leaf text-green-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold">Storytelling Sustentável</h4>
-                <p class="text-gray-600">Narrativa visual que destaca valores ecológicos</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <div class="bg-green-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-cart-plus text-green-600"></i>
+            </div>
+            
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fa-solid fa-recycle text-green-600"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Checkout Otimizado</h4>
-                <p class="text-gray-600">Processo de compra simplificado em 3 etapas</p>
+                <h4 class="font-semibold">Materiais 100% recicláveis</h4>
+                <p class="text-sm text-gray-600">Embalagens e produtos com ciclo fechado</p>
               </div>
-            </li>
-            <li class="flex items-start">
-              <div class="bg-green-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-mobile-alt text-green-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold">Mobile-First</h4>
-                <p class="text-gray-600">Experiência perfeita em dispositivos móveis</p>
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Resultados -->
-  <section class="py-20 bg-gradient-to-r from-green-600 to-teal-700 text-white">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-black mb-6">Resultados <span class="text-green-200">Alcançados</span></h2>
+  <!-- Products -->
+  <section id="products" class="py-20 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Produtos com <span class="eco-text">Propósito</span></h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Itens selecionados que fazem bem para você e para o planeta</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="eco-card">
+          <div class="p-6">
+            <div class="w-full h-48 bg-gradient-to-r from-green-200 to-emerald-300 rounded-xl flex items-center justify-center mb-6">
+              <i class="fa-solid fa-jug-detergent text-5xl text-white"></i>
+            </div>
+            <div class="mb-4">
+              <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Limpeza</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Kit Limpeza Ecológica</h3>
+            <p class="text-gray-600 mb-4">Produtos de limpeza biodegradáveis e embalagens recarregáveis.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-black text-green-700">R$ 89<span class="text-sm">,90</span></span>
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="eco-card">
+          <div class="p-6">
+            <div class="w-full h-48 bg-gradient-to-r from-amber-200 to-yellow-300 rounded-xl flex items-center justify-center mb-6">
+              <i class="fa-solid fa-basket-shopping text-5xl text-white"></i>
+            </div>
+            <div class="mb-4">
+              <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Casa</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Marmitas Sustentáveis</h3>
+            <p class="text-gray-600 mb-4">Conjunto de potes livres de plástico para armazenar alimentos.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-black text-green-700">R$ 129<span class="text-sm">,90</span></span>
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="eco-card">
+          <div class="p-6">
+            <div class="w-full h-48 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-xl flex items-center justify-center mb-6">
+              <i class="fa-solid fa-bottle-water text-5xl text-white"></i>
+            </div>
+            <div class="mb-4">
+              <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Beleza</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Cosméticos Naturais</h3>
+            <p class="text-gray-600 mb-4">Kit com produtos de higiene pessoal veganos e cruelty-free.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-black text-green-700">R$ 159<span class="text-sm">,90</span></span>
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-          <div class="text-4xl font-bold mb-2">38%</div>
-          <p>Aumento na taxa de conversão</p>
+      <div class="text-center mt-12">
+        <a href="#shop" class="btn btn-secondary">
+          <i class="fa-solid fa-store mr-2"></i>Ver Todos os Produtos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section id="impact" class="py-20 bg-gradient-to-br from-green-600 to-emerald-700 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Nosso <span class="text-green-200">Impacto</span> no Planeta</h2>
+        <p class="text-xl text-green-100 max-w-3xl mx-auto">A cada compra, você contribui para um mundo mais verde e sustentável</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div class="text-center eco-card bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div class="stat-number mb-2 text-white" data-count="12458">0</div>
+          <p class="text-green-100 font-medium">Árvores plantadas</p>
         </div>
-        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-          <div class="text-4xl font-bold mb-2">2.8x</div>
-          <p>Mais vendas no primeiro mês</p>
+        <div class="text-center eco-card bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div class="stat-number mb-2 text-white" data-count="382">0</div>
+          <p class="text-green-100 font-medium">Toneladas de plástico evitadas</p>
         </div>
-        <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-          <div class="text-4xl font-bold mb-2">45%</div>
-          <p>Redução na taxa de abandono</p>
+        <div class="text-center eco-card bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div class="stat-number mb-2 text-white" data-count="76">0</div>
+          <p class="text-green-100 font-medium">Comunidades impactadas</p>
+        </div>
+        <div class="text-center eco-card bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div class="stat-number mb-2 text-white" data-count="98">0</div>
+          <p class="text-green-100 font-medium">Satisfação dos clientes</p>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Compensação de Carbono</h3>
+            <p class="mb-6">Todas as nossas entregas são 100% neutras em carbono. Para cada pedido, investimos em projetos de reflorestamento e energia renovável.</p>
+            <a href="#impact" class="btn bg-white text-green-600 hover:bg-gray-100">
+              <i class="fa-solid fa-leaf mr-2"></i>Saiba mais
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <div class="bg-white/20 p-6 rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <span>Emissões compensadas</span>
+                <span class="font-bold">100%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5 mb-6">
+                <div class="bg-white h-2.5 rounded-full" style="width: 100%"></div>
+              </div>
+              
+              <div class="flex items-center justify-between mb-4">
+                <span>Entregas sustentáveis</span>
+                <span class="font-bold">98%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5 mb-6">
+                <div class="bg-white h-2.5 rounded-full" style="width: 98%"></div>
+              </div>
+              
+              <div class="flex items-center justify-between mb-4">
+                <span>Materiais reciclados</span>
+                <span class="font-bold">92%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5">
+                <div class="bg-white h-2.5 rounded-full" style="width: 92%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 bg-white">
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">O que nossos <span class="eco-text">clientes</span> dizem</h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Depoimentos reais de pessoas que fazem parte dessa jornada sustentável</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="eco-card rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-green-600">MC</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Maria Costa</h4>
+              <p class="text-sm text-gray-600">Há 2 anos comprando</p>
+            </div>
+          </div>
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic">
+            "Não é apenas uma loja, é um estilo de vida. Cada produto vem com uma história que me faz sentir parte de algo maior."
+          </p>
+        </div>
+        
+        <div class="eco-card rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-green-600">PS</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Pedro Silva</h4>
+              <p class="text-sm text-gray-600">Há 1 ano comprando</p>
+            </div>
+          </div>
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic">
+            "A qualidade dos produtos surpreende e saber que estou contribuindo para um mundo melhor torna cada compra especial."
+          </p>
+        </div>
+        
+        <div class="eco-card rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-green-600">AF</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Ana Ferreira</h4>
+              <p class="text-sm text-gray-600">Há 6 meses comprando</p>
+            </div>
+          </div>
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p class="text-gray-600 italic">
+            "O storytelling visual me conquistou. Consumo de forma consciente e educo meus filhos sobre sustentabilidade através dos produtos."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Shop -->
+  <section id="shop" class="py-20 bg-gradient-to-br from-green-50 to-emerald-50 relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-black mb-6">Quer um e-commerce que converta?</h2>
-      <p class="text-xl text-gray-700 mb-8">Criamos lojas virtuais com storytelling visual e alta conversão.</p>
-      <a class="btn btn-primary" href="#" data-wa="portfolio">
-        <i class="fa-brands fa-whatsapp mr-2"></i>Falar com Especialista
+      <h2 class="text-3xl md:text-4xl font-black mb-6">Pronto para fazer <span class="eco-text">escolhas conscientes</span>?</h2>
+      <p class="text-xl text-gray-700 mb-8">Junte-se a milhares de pessoas que já transformaram seu consumo em um ato de cuidado com o planeta.</p>
+      <a class="btn btn-primary pulse-eco" href="#products">
+        <i class="fa-solid fa-basket-shopping mr-2"></i>Começar a Comprar
       </a>
     </div>
   </section>
@@ -186,43 +694,131 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3">
-              <span class="text-white font-bold text-xl">T22</span>
+            <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mr-3">
+              <i class="fa-solid fa-leaf text-white"></i>
             </div>
-            <span class="text-2xl font-bold">Terminal<span class="text-blue-400">22</span></span>
+            <span class="text-2xl font-black">EcoLife<span class="text-green-400">Store</span></span>
           </div>
-          <p class="text-gray-400">Landing pages de alta conversão para PMEs.</p>
+          <p class="text-gray-400 mb-4">E-commerce sustentável com produtos ecológicos e histórias inspiradoras.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-3">Serviços</h3>
+          <h3 class="text-lg font-semibold mb-3">Produtos</h3>
           <ul class="space-y-2 text-gray-400">
-            <li>Landing Pages</li>
-            <li>Design Responsivo</li>
-            <li>SEO On‑page</li>
-            <li>Consultoria</li>
+            <li><a href="#" class="hover:text-white transition">Casa Sustentável</a></li>
+            <li><a href="#" class="hover:text-white transition">Beleza Natural</a></li>
+            <li><a href="#" class="hover:text-white transition">Moda Consciente</a></li>
+            <li><a href="#" class="hover:text-white transition">Alimentação Saudável</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-3">Links</h3>
           <ul class="space-y-2 text-gray-400">
-            <li><a href="../index.html">Início</a></li>
-            <li><a href="../index.html#servicos">Serviços</a></li>
-            <li><a href="../index.html#portfolio">Portfólio</a></li>
-            <li><a href="../index.html#planos">Planos</a></li>
+            <li><a href="#story" class="hover:text-white transition">Nossa História</a></li>
+            <li><a href="#impact" class="hover:text-white transition">Nosso Impacto</a></li>
+            <li><a href="#testimonials" class="hover:text-white transition">Depoimentos</a></li>
+            <li><a href="#" class="hover:text-white transition">Perguntas Frequentes</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-3">Contato</h3>
           <ul class="space-y-2 text-gray-400">
-            <li><i class="fa-brands fa-whatsapp mr-2"></i><a href="https://wa.me/5534992340119" target="_blank" rel="noopener">(34) 99234‑0119</a></li>
-            <li><i class="fa-regular fa-envelope mr-2"></i><a href="mailto:contato@terminal22.com.br">contato@terminal22.com.br</a></li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-envelope mr-2"></i>
+              <a href="mailto:contato@ecolifestore.com" class="hover:text-white transition">contato@ecolifestore.com</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fa-brands fa-whatsapp mr-2"></i>
+              <a href="https://wa.me/5534992340119" target="_blank" class="hover:text-white transition">(34) 99234-0119</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-location-dot mr-2"></i>
+              <span>Av. Sustentabilidade, 100 - Eco Parque, SP</span>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">© 2025 Terminal 22. Todos os direitos reservados.</div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+        © 2025 EcoLife Store. Todos os direitos reservados.
+      </div>
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script>
+    // Initialize animations with GSAP and ScrollTrigger
+    document.addEventListener('DOMContentLoaded', function() {
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animate elements on scroll
+      gsap.utils.toArray('.eco-card').forEach(card => {
+        gsap.fromTo(card, 
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      });
+      
+      // Animate stats counter
+      const statElements = document.querySelectorAll('.stat-number');
+      statElements.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        let current = 0;
+        const duration = 2000; // ms
+        const steps = 60;
+        const increment = target / steps;
+        const stepTime = duration / steps;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            clearInterval(timer);
+            current = target;
+          }
+          stat.textContent = Math.round(current).toLocaleString();
+        }, stepTime);
+      });
+      
+      // Storytelling animation
+      const storyItems = document.querySelectorAll('.story-item');
+      
+      storyItems.forEach((item, index) => {
+        gsap.fromTo(item, 
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      });
+    });
+  </script>
 </body>
 </html>

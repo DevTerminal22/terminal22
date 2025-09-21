@@ -3,208 +3,510 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechStart Solutions - Terminal 22</title>
-  <meta name="description" content="Case de sucesso: Landing page para geração de leads B2B - Terminal 22" />
+  <title>TechStart Solutions - Geração de Leads B2B</title>
+  <meta name="description" content="Soluções inteligentes para geração de leads B2B com alta conversão através de copy direta e prova social estratégica." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     :root {
-      --brandA: #7C3AED;
-      --brandB: #06B6D4;
-      --primary: #2563eb;
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --secondary: #7C3AED;
+      --accent: #06B6D4;
+      --dark: #0F172A;
+      --light: #F8FAFC;
+      --gray: #64748B;
     }
     
-    .brand-text {
-      background: linear-gradient(135deg, var(--brandA), var(--brandB));
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    /* Animated gradient background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(-45deg, #e6f0ff, #f0e6ff, #e6f7ff, #e6fffa);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Custom button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.5);
+    }
+    
+    /* Interactive card */
+    .interactive-card {
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    .interactive-card:hover {
+      transform: translateY(-8px) rotateX(5deg);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradient-text 3s ease infinite;
+    }
+    
+    @keyframes gradient-text {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Stats counter */
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
+    /* Custom form styling */
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
       border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, var(--brandA), var(--brandB));
-      color: white;
-      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px -5px rgba(124, 58, 237, 0.5);
-    }
-    
-    .btn-outline {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-    }
-    
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .case-study-image {
-      border-radius: 16px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      transition: all 0.3s ease;
-    }
-    
-    .case-study-image:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
-    }
-    
-    .feature-card {
+      border: 1px solid #E2E8F0;
       background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
-      height: 100%;
+      font-size: 1rem;
     }
     
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
     }
     
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-weight: 700;
+    /* Testimonial slider */
+    .testimonial-slider {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    /* Shape dividers */
+    .custom-shape-divider-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    
+    .custom-shape-divider-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    
+    .custom-shape-divider-top svg,
+    .custom-shape-divider-bottom svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 60px;
+    }
+    
+    /* Pulse animation */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-gray-900 min-h-screen">
+<body>
+  <div class="animated-bg"></div>
+  
   <!-- Header -->
-  <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
+  <header class="fixed w-full glass z-50 py-3">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4">
-        <a href="../index.html" class="flex items-center group">
-          <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3 transform group-hover:rotate-12 transition">
-            <span class="text-white font-extrabold text-xl">T22</span>
+      <div class="flex items-center justify-between">
+        <a href="#" class="flex items-center group">
+          <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3 transform group-hover:rotate-12 transition duration-300">
+            <span class="text-white font-extrabold text-xl">TS</span>
           </div>
-          <span class="text-2xl font-extrabold">Terminal<span class="text-blue-600">22</span></span>
+          <span class="text-2xl font-black">TechStart<span class="text-blue-600">Solutions</span></span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-8 font-semibold">
-          <a class="hover:text-blue-600 transition" href="../index.html">Início</a>
-          <a class="hover:text-blue-600 transition" href="../index.html#portfolio">Portfólio</a>
+        <nav class="hidden md:flex items-center gap-8 font-medium">
+          <a class="hover:text-blue-600 transition" href="#services">Serviços</a>
+          <a class="hover:text-blue-600 transition" href="#results">Resultados</a>
+          <a class="hover:text-blue-600 transition" href="#testimonials">Depoimentos</a>
+          <a class="hover:text-blue-600 transition" href="#faq">FAQ</a>
         </nav>
 
-        <a class="btn btn-primary" href="https://wa.me/5534992340119" target="_blank">
-          <i class="fa-brands fa-whatsapp mr-2"></i>Falar no WhatsApp
+        <a class="btn btn-primary" href="#contact">
+          <i class="fa-brands fa-whatsapp mr-2"></i>Falar com Especialista
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="pt-32 pb-16 px-4">
+  <section class="pt-32 pb-20 px-4 relative overflow-hidden">
     <div class="max-w-6xl mx-auto">
-      <div class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-        <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>Case de Sucesso - B2B
-      </div>
-      
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-        TechStart <span class="brand-text">Solutions</span>
-      </h1>
-      
-      <p class="text-xl text-gray-700 mb-8 max-w-3xl">
-        Landing page para geração de leads qualificados no mercado B2B de tecnologia, com foco em copy direta e prova social estratégica.
-      </p>
-      
-      <div class="flex flex-wrap gap-4 mb-12">
-        <span class="result-badge"><i class="fa-solid fa-arrow-up mr-2"></i>Conversão: +68%</span>
-        <span class="result-badge"><i class="fa-solid fa-clock mr-2"></i>Entrega: 7 dias</span>
-        <span class="result-badge"><i class="fa-solid fa-gear mr-2"></i>Tecnologia: HTML, CSS, JS</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Showcase -->
-  <section class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl overflow-hidden shadow-2xl">
-        <div class="p-1">
-          <div class="bg-gray-800 py-3 px-4 border-b border-gray-700 flex items-center">
-            <div class="flex gap-2">
-              <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-              <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-            </div>
-            <div class="text-xs text-gray-400 mx-auto">techstart-solutions.com/landing</div>
-          </div>
-          <div class="bg-gray-900 p-8">
-            <img src="https://placehold.co/800x450/1e40af/white?text=TechStart+Solutions+Landing+Page" alt="TechStart Solutions Landing Page" class="case-study-image w-full">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Details -->
-  <section class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-3xl md:text-4xl font-black mb-6">Desafio do <span class="brand-text">Projeto</span></h2>
-          <p class="text-lg text-gray-700 mb-6">
-            A TechStart Solutions, empresa de software B2B, precisava aumentar a geração de leads qualificados para sua plataforma de gestão empresarial. O desafio era criar uma landing page que transmitisse confiança e autoridade para decisores de empresas.
+          <div class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>Geração de Leads B2B
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            Transforme visitantes em <span class="gradient-text">clientes potenciais</span>
+          </h1>
+          
+          <p class="text-xl text-gray-700 mb-8">
+            Soluções inteligentes de geração de leads B2B com copy direta e prova social estratégica que convertem visitantes em oportunidades de negócio.
           </p>
-          <p class="text-lg text-gray-700">
-            O público-alvo era formado por gestores de TI e diretores financeiros de médias e grandes empresas, necessitando de uma abordagem profissional e com foco em ROI.
-          </p>
+          
+          <div class="flex flex-wrap gap-4 mb-10">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-arrow-trend-up text-blue-600"></i>
+              </div>
+              <span class="font-semibold">+68% Conversão</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-users text-purple-600"></i>
+              </div>
+              <span class="font-semibold">Leads Qualificados</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center mr-3">
+                <i class="fa-solid fa-gauge-high text-cyan-600"></i>
+              </div>
+              <span class="font-semibold">Alta Performance</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="btn btn-primary pulse">
+              <i class="fa-solid fa-chart-line mr-2"></i>Quero mais leads
+            </a>
+            <a href="#services" class="btn glass text-gray-700 border border-gray-200">
+              <i class="fa-solid fa-gear mr-2"></i>Conhecer soluções
+            </a>
+          </div>
         </div>
         
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="text-2xl font-bold mb-6">Metas do Projeto</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-bullseye text-blue-600"></i>
+        <div class="relative">
+          <div class="floating interactive-card">
+            <div class="bg-white rounded-2xl p-1 shadow-xl">
+              <div class="bg-gray-800 py-3 px-4 border-b border-gray-700 flex items-center rounded-t-2xl">
+                <div class="flex gap-2">
+                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                </div>
+                <div class="text-xs text-gray-400 mx-auto">techstartsolutions.com/lead-generation</div>
               </div>
-              <div>
-                <h4 class="font-semibold">Aumentar Taxa de Conversão</h4>
-                <p class="text-gray-600">Meta: +40% em leads qualificados</p>
+              <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-b-2xl">
+                <div class="bg-white rounded-xl p-6 shadow-md mb-6">
+                  <h3 class="font-bold text-lg mb-2">Solicite uma demonstração</h3>
+                  <p class="text-gray-600 text-sm mb-4">Preencha o formulário e nossa equipe entrará em contato em até 24h</p>
+                  
+                  <div class="space-y-4">
+                    <input type="text" placeholder="Nome completo" class="form-input">
+                    <input type="email" placeholder="E-mail corporativo" class="form-input">
+                    <input type="tel" placeholder="Telefone" class="form-input">
+                    <input type="text" placeholder="Empresa" class="form-input">
+                    <button class="btn btn-primary w-full">Solicitar demonstração</button>
+                  </div>
+                </div>
+                
+                <div class="flex items-center justify-center space-x-6">
+                  <div class="text-center">
+                    <div class="text-2xl font-black text-blue-600">92%</div>
+                    <div class="text-xs text-gray-600">Taxa de sucesso</div>
+                  </div>
+                  <div class="h-8 w-px bg-gray-300"></div>
+                  <div class="text-center">
+                    <div class="text-2xl font-black text-purple-600">350+</div>
+                    <div class="text-xs text-gray-600">Clientes satisfeitos</div>
+                  </div>
+                  <div class="h-8 w-px bg-gray-300"></div>
+                  <div class="text-center">
+                    <div class="text-2xl font-black text-cyan-600">24h</div>
+                    <div class="text-xs text-gray-600">Tempo de resposta</div>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+          
+          <!-- Floating elements -->
+          <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-200 rounded-full opacity-30"></div>
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-purple-200 rounded-full opacity-30"></div>
+          <div class="absolute top-1/2 -right-8 w-16 h-16 bg-cyan-200 rounded-full opacity-40"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <p class="text-gray-600 font-medium">Empresas que confiam em nossas soluções</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70">
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-gray-200 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-gray-700">Empresa A</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-gray-200 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-gray-700">Empresa B</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-gray-200 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-gray-700">Empresa C</span>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="h-12 w-32 bg-gray-200 rounded-lg flex items-center justify-center">
+            <span class="font-bold text-gray-700">Empresa D</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
+    <div class="custom-shape-divider-top">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill" fill="#ffffff"></path>
+      </svg>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Nossas <span class="gradient-text">Soluções</span></h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Estratégias comprovadas para gerar leads qualificados e aumentar suas conversões</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-pen-nib text-2xl text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Copy Estratégica</h3>
+          <p class="text-gray-600 mb-4">Textos persuasivos focados em benefícios para o negócio e ROI, com linguagem técnica apropriada para o público B2B.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Mensagens diretas ao ponto
             </li>
-            <li class="flex items-start">
-              <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-gauge-high text-blue-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold">Performance Técnica</h4>
-                <p class="text-gray-600">Carregamento em menos de 2 segundos</p>
-              </div>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Foco em objetivos de negócio
             </li>
-            <li class="flex items-start">
-              <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                <i class="fa-solid fa-mobile-screen text-blue-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold">Design Responsivo</h4>
-                <p class="text-gray-600">Experiência perfeita em todos os dispositivos</p>
-              </div>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Linguagem técnica apropriada
+            </li>
+          </ul>
+        </div>
+        
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-star text-2xl text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Prova Social</h3>
+          <p class="text-gray-600 mb-4">Seção de depoimentos de clientes reais, cases de sucesso e logos de empresas que utilizam a plataforma.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Depoimentos de clientes
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Cases de sucesso detalhados
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Logos de empresas parceiras
+            </li>
+          </ul>
+        </div>
+        
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-chart-simple text-2xl text-cyan-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Métricas de Resultado</h3>
+          <p class="text-gray-600 mb-4">Destaque para números concretos de performance, economia de tempo e retorno sobre investimento.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>ROI mensurável
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>Economia de tempo e recursos
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>Taxas de conversão transparentes
+            </li>
+          </ul>
+        </div>
+        
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-pen-ruler text-2xl text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Formulário Inteligente</h3>
+          <p class="text-gray-600 mb-4">Formulário multi-step com campos estratégicos para qualificação de leads e segmentação.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Qualificação automática de leads
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Segmentação por perfil
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-blue-600 mr-2"></i>Integração com CRM
+            </li>
+          </ul>
+        </div>
+        
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-bolt text-2xl text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Performance Otimizada</h3>
+          <p class="text-gray-600 mb-4">Carregamento ultrarrápido com otimização de imagens, lazy loading e CDN para entrega global.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Tempo de carregamento otimizado
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Otimização para dispositivos móveis
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-purple-600 mr-2"></i>Entrega via CDN global
+            </li>
+          </ul>
+        </div>
+        
+        <div class="interactive-card glass rounded-2xl p-6">
+          <div class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6">
+            <i class="fa-solid fa-mobile-screen-button text-2xl text-cyan-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Design Responsivo</h3>
+          <p class="text-gray-600 mb-4">Layout adaptativo que oferece experiência perfeita em desktop, tablet e smartphones.</p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>Experiência mobile-first
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>Design adaptativo
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-check text-cyan-600 mr-2"></i>Interface intuitiva
             </li>
           </ul>
         </div>
@@ -212,147 +514,286 @@
     </div>
   </section>
 
-  <!-- Solutions -->
-  <section class="py-20 bg-white">
+  <!-- Results -->
+  <section id="results" class="py-20 bg-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-black mb-6">Soluções <span class="brand-text">Implementadas</span></h2>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Resultados <span class="gradient-text">Comprovados</span></h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Métricas reais que demonstram o impacto das nossas soluções na geração de leads</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div class="text-center interactive-card rounded-2xl p-8 glass">
+          <div class="stat-number mb-2" data-count="68">0</div>
+          <p class="text-gray-600 font-medium">Aumento na conversão</p>
+        </div>
+        <div class="text-center interactive-card rounded-2xl p-8 glass">
+          <div class="stat-number mb-2" data-count="142">0</div>
+          <p class="text-gray-600 font-medium">Leads qualificados</p>
+        </div>
+        <div class="text-center interactive-card rounded-2xl p-8 glass">
+          <div class="stat-number mb-2" data-count="92">0</div>
+          <p class="text-gray-600 font-medium">Satisfação do cliente</p>
+        </div>
+        <div class="text-center interactive-card rounded-2xl p-8 glass">
+          <div class="stat-number mb-2" data-count="24">0</div>
+          <p class="text-gray-600 font-medium">Horas para implementação</p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Relatório Personalizado</h3>
+            <p class="mb-6">Solicite uma análise gratuita da sua estratégia atual de captação de leads e receba recomendações personalizadas.</p>
+            <a href="#contact" class="btn bg-white text-blue-600 hover:bg-gray-100">
+              <i class="fa-solid fa-chart-pie mr-2"></i>Solicitar análise
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <div class="bg-white/20 p-6 rounded-xl backdrop-blur-sm">
+              <div class="flex items-center justify-between mb-4">
+                <span>Taxa de conversão</span>
+                <span class="font-bold">+68%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5 mb-6">
+                <div class="bg-white h-2.5 rounded-full" style="width: 68%"></div>
+              </div>
+              
+              <div class="flex items-center justify-between mb-4">
+                <span>Leads qualificados</span>
+                <span class="font-bold">+142%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5 mb-6">
+                <div class="bg-white h-2.5 rounded-full" style="width: 85%"></div>
+              </div>
+              
+              <div class="flex items-center justify-between mb-4">
+                <span>ROI</span>
+                <span class="font-bold">+325%</span>
+              </div>
+              <div class="w-full bg-white/30 rounded-full h-2.5">
+                <div class="bg-white h-2.5 rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 relative overflow-hidden">
+    <div class="custom-shape-divider-top">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill" fill="#ffffff"></path>
+      </svg>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">O que nossos <span class="gradient-text">clientes dizem</span></h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Depoimentos reais de empresas que transformaram sua geração de leads</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
-            <i class="fa-solid fa-quote-right"></i>
+        <div class="interactive-card bg-white rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-blue-600">AS</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Ana Silva</h4>
+              <p class="text-sm text-gray-600">Diretora de Marketing</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-3">Copy Estratégica</h3>
-          <p class="text-gray-600">Textos persuasivos focados em benefícios para o negócio e ROI, com linguagem técnica apropriada para o público B2B.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Prova Social</h3>
-          <p class="text-gray-600">Seção de depoimentos de clientes reais, cases de sucesso e logos de empresas que utilizam a plataforma.</p>
+          <p class="text-gray-600 italic">
+            "A TechStart Solutions revolucionou nossa geração de leads. Em um mês, aumentamos nossa taxa de conversão em 68% e os leads são muito mais qualificados."
+          </p>
         </div>
         
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
-            <i class="fa-solid fa-chart-simple"></i>
+        <div class="interactive-card bg-white rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-purple-600">RS</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Ricardo Santos</h4>
+              <p class="text-sm text-gray-600">CEO</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-3">Métricas de Resultado</h3>
-          <p class="text-gray-600">Destaque para números concretos de performance, economia de tempo e retorno sobre investimento.</p>
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic">
+            "A estratégia de prova social implementada pela TechStart fez toda a diferença. Agora temos cases reais que convertem muito melhor do que qualquer texto promocional."
+          </p>
         </div>
         
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
-            <i class="fa-solid fa-pen-ruler"></i>
+        <div class="interactive-card bg-white rounded-2xl p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
+              <span class="font-bold text-cyan-600">CP</span>
+            </div>
+            <div>
+              <h4 class="font-semibold">Carla Pereira</h4>
+              <p class="text-sm text-gray-600">Gerente de Vendas</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-3">Formulário Inteligente</h3>
-          <p class="text-gray-600">Formulário multi-step com campos estratégicos para qualificação de leads e segmentação.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
-            <i class="fa-solid fa-bolt"></i>
+          <div class="text-yellow-400 mb-4">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Performance Otimizada</h3>
-          <p class="text-gray-600">Carregamento ultrarrápido com otimização de imagens, lazy loading e CDN para entrega global.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="text-blue-600 text-3xl mb-4">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Design Responsivo</h3>
-          <p class="text-gray-600">Layout adaptativo que oferece experiência perfeita em desktop, tablet e smartphones.</p>
+          <p class="text-gray-600 italic">
+            "O formulário inteligente qualifica os leads antes mesmo do contato, economizando tempo da equipe e aumentando significativamente nossa taxa de fechamento."
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Results -->
-  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-white relative">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">Perguntas <span class="gradient-text">Frequentes</span></h2>
+        <p class="text-xl text-gray-700">Tire suas dúvidas sobre nossas soluções de geração de leads B2B</p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="border border-gray-200 rounded-2xl p-6 interactive-card">
+          <button class="flex items-center justify-between w-full text-left font-semibold text-lg">
+            <span>Quanto tempo leva para implementar as soluções?</span>
+            <i class="fa-solid fa-chevron-down text-blue-600"></i>
+          </button>
+          <div class="mt-4 text-gray-600">
+            O tempo de implementação varia conforme a complexidade do projeto, mas normalmente entregamos em até 7 dias úteis. Projetos mais simples podem ficar prontos em 3-4 dias.
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 rounded-2xl p-6 interactive-card">
+          <button class="flex items-center justify-between w-full text-left font-semibold text-lg">
+            <span>Como é feita a qualificação dos leads?</span>
+            <i class="fa-solid fa-chevron-down text-blue-600"></i>
+          </button>
+          <div class="mt-4 text-gray-600">
+            Utilizamos formulários inteligentes com perguntas estratégicas que segmentam os leads por perfil, necessidades e estágio do funil de vendas. Também implementamos score de leads baseado no comportamento.
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 rounded-2xl p-6 interactive-card">
+          <button class="flex items-center justify-between w-full text-left font-semibold text-lg">
+            <span>Vocês trabalham com integração a CRMs?</span>
+            <i class="fa-solid fa-chevron-down text-blue-600"></i>
+          </button>
+          <div class="mt-4 text-gray-600">
+            Sim, integramos com os principais CRMs do mercado como Salesforce, HubSpot, RD Station e PipeDrive. Caso use um CRM diferente, podemos desenvolver uma integração personalizada.
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 rounded-2xl p-6 interactive-card">
+          <button class="flex items-center justify-between w-full text-left font-semibold text-lg">
+            <span>Quais métricas posso esperar acompanhar?</span>
+            <i class="fa-solid fa-chevron-down text-blue-600"></i>
+          </button>
+          <div class="mt-4 text-gray-600">
+            Fornecemos dashboard completo com taxa de conversão, custo por lead, qualidade dos leads, ROI, tempo de resposta e outras métricas relevantes para seu negócio B2B.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-blue-600 to-purple-600 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-black mb-6">Resultados <span class="text-blue-200">Alcançados</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
-            <h3 class="text-2xl font-bold mb-6">Métricas de Sucesso</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="text-white">
+          <h2 class="text-3xl md:text-4xl font-black mb-6">Pronto para transformar sua geração de leads?</h2>
+          <p class="text-xl text-blue-100 mb-8">Entre em contato com nossa equipe e solicite uma demonstração gratuita das nossas soluções.</p>
+          
+          <div class="space-y-6">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <p class="font-semibold">Telefone</p>
+                <p class="text-blue-100">(34) 99234-0119</p>
+              </div>
+            </div>
             
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between items-center mb-2">
-                  <span class="font-semibold">Taxa de Conversão</span>
-                  <span class="font-bold text-green-300">+68%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 68%"></div>
-                </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                <i class="fa-solid fa-envelope"></i>
               </div>
-              
               <div>
-                <div class="flex justify-between items-center mb-2">
-                  <span class="font-semibold">Leads Qualificados</span>
-                  <span class="font-bold text-green-300">+142%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 85%"></div>
-                </div>
+                <p class="font-semibold">E-mail</p>
+                <p class="text-blue-100">contato@techstartsolutions.com.br</p>
               </div>
-              
+            </div>
+            
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                <i class="fa-solid fa-clock"></i>
+              </div>
               <div>
-                <div class="flex justify-between items-center mb-2">
-                  <span class="font-semibold">Tempo de Carregamento</span>
-                  <span class="font-bold text-green-300">1.2s</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                  <div class="bg-green-400 h-2.5 rounded-full" style="width: 90%"></div>
-                </div>
+                <p class="font-semibold">Horário de atendimento</p>
+                <p class="text-blue-100">Segunda a sexta, 9h às 18h</p>
               </div>
             </div>
           </div>
         </div>
         
-        <div>
-          <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
-            <h3 class="text-2xl font-bold mb-6">Feedback do Cliente</h3>
-            
-            <div class="flex items-start mb-6">
-              <div class="mr-4">
-                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span class="text-white font-bold">JS</span>
-                </div>
-              </div>
-              <div>
-                <h4 class="font-semibold">João Silva</h4>
-                <p class="text-blue-100 text-sm">Diretor de Marketing - TechStart Solutions</p>
-                <p class="text-white mt-2 italic">
-                  "A landing page superou nossas expectativas. Em apenas duas semanas, já tivemos um aumento de 68% na conversão e os leads são muito mais qualificados. O trabalho da Terminal 22 foi exceptional desde o briefing até a entrega."
-                </p>
-              </div>
+        <div class="bg-white rounded-2xl p-8 interactive-card">
+          <h3 class="text-2xl font-bold mb-6">Solicite uma demonstração</h3>
+          
+          <form class="space-y-6">
+            <div>
+              <label class="block text-gray-700 mb-2">Nome completo</label>
+              <input type="text" class="form-input" placeholder="Seu nome">
             </div>
             
-            <a href="../index.html#portfolio" class="btn btn-outline w-full bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
-              <i class="fa-solid fa-arrow-left mr-2"></i>Voltar ao Portfólio
-            </a>
-          </div>
+            <div>
+              <label class="block text-gray-700 mb-2">E-mail corporativo</label>
+              <input type="email" class="form-input" placeholder="seu@email.com">
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2">Telefone</label>
+              <input type="tel" class="form-input" placeholder="(00) 00000-0000">
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2">Empresa</label>
+              <input type="text" class="form-input" placeholder="Nome da empresa">
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2">Mensagem</label>
+              <textarea class="form-input" rows="4" placeholder="Conte-nos sobre seus objetivos"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-full">
+              <i class="fa-solid fa-paper-plane mr-2"></i>Enviar solicitação
+            </button>
+          </form>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-black mb-6">Quer resultados similares para sua empresa?</h2>
-      <p class="text-xl text-gray-700 mb-8">Nossa equipe pode criar uma landing page de alta conversão para seu negócio B2B.</p>
-      <a class="btn btn-primary" href="https://wa.me/5534992340119" target="_blank">
-        <i class="fa-brands fa-whatsapp mr-2"></i>Falar com Especialista
-      </a>
     </div>
   </section>
 
@@ -362,41 +803,145 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mr-3">
-              <span class="text-white font-bold text-xl">T22</span>
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3">
+              <span class="text-white font-bold text-xl">TS</span>
             </div>
-            <span class="text-2xl font-bold">Terminal<span class="text-blue-400">22</span></span>
+            <span class="text-2xl font-black">TechStart<span class="text-blue-400">Solutions</span></span>
           </div>
-          <p class="text-gray-400">Landing pages de alta conversão para PMEs.</p>
+          <p class="text-gray-400 mb-4">Soluções inteligentes para geração de leads B2B com alta conversão.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </div>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-3">Serviços</h3>
           <ul class="space-y-2 text-gray-400">
-            <li>Landing Pages</li>
-            <li>Design Responsivo</li>
-            <li>SEO On‑page</li>
-            <li>Consultoria</li>
+            <li><a href="#" class="hover:text-white transition">Copy Estratégica</a></li>
+            <li><a href="#" class="hover:text-white transition">Prova Social</a></li>
+            <li><a href="#" class="hover:text-white transition">Formulários Inteligentes</a></li>
+            <li><a href="#" class="hover:text-white transition">Landing Pages</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-3">Links</h3>
           <ul class="space-y-2 text-gray-400">
-            <li><a href="../index.html" class="hover:text-white transition">Início</a></li>
-            <li><a href="../index.html#servicos" class="hover:text-white transition">Serviços</a></li>
-            <li><a href="../index.html#portfolio" class="hover:text-white transition">Portfólio</a></li>
-            <li><a href="../index.html#planos" class="hover:text-white transition">Planos</a></li>
+            <li><a href="#" class="hover:text-white transition">Início</a></li>
+            <li><a href="#services" class="hover:text-white transition">Serviços</a></li>
+            <li><a href="#results" class="hover:text-white transition">Resultados</a></li>
+            <li><a href="#testimonials" class="hover:text-white transition">Depoimentos</a></li>
+            <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-lg font-semibold mb-3">Contato</h3>
           <ul class="space-y-2 text-gray-400">
-            <li><i class="fa-brands fa-whatsapp mr-2"></i><a href="https://wa.me/5534992340119" target="_blank" rel="noopener" class="hover:text-white transition">(34) 99234‑0119</a></li>
-            <li><i class="fa-regular fa-envelope mr-2"></i><a href="mailto:contato@terminal22.com.br" class="hover:text-white transition">contato@terminal22.com.br</a></li>
+            <li class="flex items-center">
+              <i class="fa-brands fa-whatsapp mr-2"></i>
+              <a href="https://wa.me/5534992340119" target="_blank" class="hover:text-white transition">(34) 99234-0119</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fa-regular fa-envelope mr-2"></i>
+              <a href="mailto:contato@techstartsolutions.com.br" class="hover:text-white transition">contato@techstartsolutions.com.br</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fa-solid fa-location-dot mr-2"></i>
+              <span>Av. Paulista, 1000 - São Paulo, SP</span>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">© 2025 Terminal 22. Todos os direitos reservados.</div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+        © 2025 TechStart Solutions. Todos os direitos reservados.
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Initialize animations with GSAP and ScrollTrigger
+    document.addEventListener('DOMContentLoaded', function() {
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animate elements on scroll
+      gsap.utils.toArray('.interactive-card').forEach(card => {
+        gsap.fromTo(card, 
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      });
+      
+      // Animate stats counter
+      const statElements = document.querySelectorAll('.stat-number');
+      statElements.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        let current = 0;
+        const duration = 2000; // ms
+        const steps = 60;
+        const increment = target / steps;
+        const stepTime = duration / steps;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            clearInterval(timer);
+            current = target;
+          }
+          stat.textContent = Math.round(current) + (stat.textContent.includes('%') ? '%' : '');
+        }, stepTime);
+      });
+      
+      // FAQ accordion functionality
+      const faqItems = document.querySelectorAll('#faq .interactive-card');
+      faqItems.forEach(item => {
+        const button = item.querySelector('button');
+        const content = item.querySelector('div:last-child');
+        
+        // Initially hide content
+        gsap.set(content, { height: 0, opacity: 0 });
+        
+        button.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+          
+          if (isOpen) {
+            // Close
+            gsap.to(content, {
+              height: 0,
+              opacity: 0,
+              duration: 0.3
+            });
+            item.classList.remove('active');
+          } else {
+            // Open
+            gsap.to(content, {
+              height: 'auto',
+              opacity: 1,
+              duration: 0.3
+            });
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
